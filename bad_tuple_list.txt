@@ -1,0 +1,3 @@
+QPR, 4, 9, 9
+Brentford, 11, 8, 3
+Wycombe, 3, 6 
