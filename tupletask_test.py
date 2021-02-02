@@ -34,8 +34,40 @@ class TestSort(unittest.TestCase):
         tupleTask.createListFromFile(tupleList, 'some_file.txt')
         sorted_data = tupleTask.sortedTuples(tupleList, 1, True)
         self.assertEqual(sorted_data[0][0], 'Arsenal')
+
+
+class TestSortOne(unittest.TestCase):
+    @mock.patch ('tupleTask.createListFromFile', side_effect = createListFromFile_side_effect)
+    def test_sort_by_loss(self, mock_createListFromFile):
+        tupleList=[]
+        tupleTask.createListFromFile(tupleList, 'another_file.txt')
+        sorted_data = tupleTask.sortedTuples(tupleList, 3, True)
+        self.assertEqual(sorted_data[0][0], 'Tottenham')
+
+
+class TestSortTwo(unittest.TestCase):
+    @mock.patch ('tupleTask.createListFromFile', side_effect = createListFromFile_side_effect)
+    def test_sort_by_draw(self, mock_createListFromFile):
+        tupleList=[]
+        tupleTask.createListFromFile(tupleList, 'yet_another_file.txt')
+        sorted_data = tupleTask.sortedTuples(tupleList, 2, True)
+        self.assertEqual(sorted_data[0][0], 'Arsenal')
+
         
+class TestSortTeam(unittest.TestCase):
+    @mock.patch ('tupleTask.createListFromFile', side_effect = createListFromFile_side_effect)
+    def test_sort_by_team(self, mock_createListFromFile):
+        tupleList=[]
+        tupleTask.createListFromFile(tupleList, 'last_file.txt')
+        sorted_data = tupleTask.sortedTuples(tupleList, 0, False)
+        self.assertEqual(sorted_data[0][0], 'Arsenal')
+
+
         
+#sort by loss
+#sort by draw
+#sort by team
+#commit and push into git
 
 
 

@@ -15,7 +15,6 @@ def createListFromFile(tupleList, fileName):
     n = len(dataLists)
     for i in range(0, n):
         tupleList.append(tuple(dataLists[i]))
-
      
 
 def itemGetter(*items):
