@@ -6,7 +6,7 @@ import tupleTask
 def createListFromFile_side_effect(tupleList, fileName):
     Arsenal = ['Arsenal', 10, 7, 3]
     Chelsea = ['Chelsea', 0, 4, 9]
-    Tottenham = ['Tottenham', 6, 3, 10]
+    Tottenham = ['Tottenham', 6, 8, 7]
     tupleList.append(Chelsea)
     tupleList.append(Arsenal)
     tupleList.append(Tottenham)
@@ -35,26 +35,20 @@ class TestSort(unittest.TestCase):
         sorted_data = tupleTask.sortedTuples(tupleList, 1, True)
         self.assertEqual(sorted_data[0][0], 'Arsenal')
 
-
-class TestSortOne(unittest.TestCase):
     @mock.patch ('tupleTask.createListFromFile', side_effect = createListFromFile_side_effect)
     def test_sort_by_loss(self, mock_createListFromFile):
         tupleList=[]
         tupleTask.createListFromFile(tupleList, 'another_file.txt')
         sorted_data = tupleTask.sortedTuples(tupleList, 3, True)
-        self.assertEqual(sorted_data[0][0], 'Tottenham')
+        self.assertEqual(sorted_data[0][0], 'Chelsea')
 
-
-class TestSortTwo(unittest.TestCase):
     @mock.patch ('tupleTask.createListFromFile', side_effect = createListFromFile_side_effect)
     def test_sort_by_draw(self, mock_createListFromFile):
         tupleList=[]
         tupleTask.createListFromFile(tupleList, 'yet_another_file.txt')
         sorted_data = tupleTask.sortedTuples(tupleList, 2, True)
-        self.assertEqual(sorted_data[0][0], 'Arsenal')
+        self.assertEqual(sorted_data[0][0], 'Tottenham')
 
-        
-class TestSortTeam(unittest.TestCase):
     @mock.patch ('tupleTask.createListFromFile', side_effect = createListFromFile_side_effect)
     def test_sort_by_team(self, mock_createListFromFile):
         tupleList=[]
